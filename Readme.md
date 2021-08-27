@@ -1,0 +1,1 @@
+Arquivo base exemplo.
