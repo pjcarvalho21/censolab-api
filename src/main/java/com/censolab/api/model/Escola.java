@@ -260,15 +260,12 @@ public class Escola {
 	@Enumerated(EnumType.STRING)
 	public StatusEscola status;
 
-	public boolean isAtiva() {
-		boolean resultado = false;
-		this.status = StatusEscola.INATIVA;
-
-		if (this.idt_sitfunc.equals("1")) {
-			this.status = StatusEscola.ATIVA;
-			resultado = true;
-		}
-		return resultado;
-	}
+	/*
+	 * public boolean isAtiva() { boolean resultado = false; this.status =
+	 * StatusEscola.INATIVA;
+	 * 
+	 * if (this.idt_sitfunc.equals("1")) { this.status = StatusEscola.ATIVA;
+	 * resultado = true; } return resultado; }
+	 */
 
 }
