@@ -1,7 +1,7 @@
 package com.censolab.api.model;
 
+import java.io.Serializable;
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -10,13 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
 import com.censolab.api.enumerate.StatusEscola;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -24,248 +18,227 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "tb_escola")
-public class Escola {
+public class Escola implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@EqualsAndHashCode.Include
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idt_id;
-
-	/* IDENTIFICAÇÃO */
-
-	private String idt_tpregistro;
-
-	private String idt_inep;
-
-	//@NotEmpty(message = "NOME: não pode ser vazio!")
-	//@Size(max = 100, message = "NOME: não pode conter mais de 100 caracteres")
-	private String idtnome;
-
-	private String idt_sitfunc;
-
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Temporal(TemporalType.DATE)
-	private Date idt_aletivof;
- 
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Temporal(TemporalType.DATE)
-	private Date idt_aletivoi;
-
-	/*
-	 * @DecimalMin(value = "-33.750833", message =
-	 * "LATITUDE: Valor não pode ser menor que -33.750833")
-	 * 
-	 * @DecimalMax(value = "5.27222299", message =
-	 * "LATITUDE: Valor não pode ser maior que 5.27222299")
-	 */
-	private String idt_latitude;
-
-	/*
-	 * @DecimalMin(value = "-73.9992222", message =
-	 * "LONGITUDE: Valor não pode ser menor que -73.9992222")
-	 * 
-	 * @DecimalMax(value = "-32.4112800", message =
-	 * "LONGITUDE: Valor não pode ser maior que -32.4112800")
-	 */
-	@Column(length = 20)
-	private String idt_longitude;
-
-//	@NotEmpty(message = "ENDEREÇO:não pode ser vazio!")
-	@Column(length = 20)
-	private String idt_end_desc;
-
-	@Column(length = 20)
-	private String idt_end_num;
-
-	@Column(length = 20)
-	private String idt_complemento;
-
-	@Column(length = 20)
-	private String idt_bairro;
-
-	/*
-	 * @NotEmpty(message = "CEP: não pode ser vazio!")
-	 * 
-	 * @Size(min = 8, message = "CEP: não pode conter menos de 8 caracteres")
-	 */
-	@Column(length = 20)
-	private String idt_cep;
-
-	@Column(length = 20)
-	private String idt_ddd;
-
-	// @NotEmpty(message = "UF: não pode ser vazio!")
-	@Column(length = 20)
-	private String idt_uf;
-
-	// @NotEmpty(message = "MUNICIPIO:não pode ser vazio!")
-	@Column(length = 20)
-	private String idt_uf_mun;
-
-	// @NotEmpty(message = "DISTRITO:não pode ser vazio!")
-	@Column(length = 20)
-	private String idt_distrito;
-
-	@Column(length = 20)
-	private String idt_tel;
-
-	@Column(length = 20)
-	private String idt_tel2;
-
-	@Column(length = 20)
-	private String idt_tel3;
-
-	// @Pattern(regexp = ".+@.+\\.[a-z]+", message="EMAIL: Deve conter @ .")
-	@Column(length = 20)
-	private String idt_email;
-
-	@Column(length = 20)
-	private String idt_fax;
-
-	@Column(length = 20)
-	private String idt_dep_adm;
-
-	@Column(length = 20)
-	private String idt_org_regional;
-
-	@Column(length = 20)
-	private String idt_zona;
-
-	@Column(length = 20)
-	private String idt_categoria;
-
-	@Column(length = 20)
-	private String idt_conv;
-
-	@Column(length = 20)
-	private String idt_mant;
-
-	@Column(length = 20)
-	private String idt_cnpj_mant;
-
-	@Column(length = 20)
-	private String idt_auto_cons;
-
-	@Column(length = 20)
-	private String idt_cnpj;
-
-	/*
-	 * @ManyToOne
-	 * 
-	 * @JoinColumn(name = "gestor") private Gestor gestor;
-	 * 
-	 * @OneToMany(mappedBy = "escola") private List<Turma> turmas = new
-	 * ArrayList<Turma>();
-	 * 
-	 * @ManyToMany(mappedBy = "escolas") private List<Professor> professores = new
-	 * ArrayList<Professor>();
-	 */
-
-	/*
-	 * @OneToMany(mappedBy = "escola", cascade = { CascadeType.ALL }) private
-	 * List<AlunoEscola> escolasAluno;
-	 */
-
-	private String flativo;
-
-	/* INFRAESTRUTURA */
-
-	private String crtAbstAg;
-
-	private String crtAbstEl;
-
-	private String crtAbstEs;
-
-	private String crtAee;
-
-	private String crtAguaCons;
-
-	private String crtAlimentacao;
-
-	private String crtAtivComp;
-
-	private String crtBndLarga;
-
-	private String crtCodLingIndio;
-
-	//@Size(max = 4, message = "Numéro máximo de 4 caracteres")
-	private String crtComputAdm;
-
-	@Column(name = "crt_comput_alu")
-	//@Size(max = 4, message = "Numéro máximo de 4 caracteres")
-	private String crtComputAlu;
-
-	private String crtDependencias;
-
-	private String crtDestLixo;
-
-	private String crtEducIndigena;
-
-	private String crtEnsfundCiclo;
-
-	private String crtEspacoFds;
-
-	private String crtEspacoTba;
-
-	private String crtEtapa;
-
-	private String crtFormOcup;
-
-	private String crtInternet;
-
-	private String crtLingIndio;
-
-	private String crtLocFunc;
-
-	private String crtLocalDiferenc;
-
-	private String crtMatDidatico;
-
-	private String crt_modalidade;
-
-	private String crtPredcomp;
-
-	//@Size(max = 8, message = "Codigo escola Compartilhada :Numéro máximo de 4 caracteres")
-	private String crt_cod_pred1;
+	private Long id;
 	
-	//@Size(max = 8, message = "Codigo escola Compartilhada :Numéro máximo de 4 caracteres")
-	private String crt_cod_pred2;
-	
-	//@Size(max = 8, message = "Codigo escola Compartilhada :Numéro máximo de 4 caracteres")
-	private String crt_cod_pred3;
-	
-	//@Size(max = 8, message = "Codigo escola Compartilhada :Numéro máximo de 4 caracteres")
-	private String crt_cod_pred4;
-	
-	//@Size(max = 8, message = "Codigo escola Compartilhada :Numéro máximo de 4 caracteres")
-	private String crt_cod_pred5;
-	
-	//@Size(max = 8, message = "Codigo escola Compartilhada :Numéro máximo de 4 caracteres")
-	private String crt_cod_pred6;
-
-	private String crtPropFormAlter;
-
-	private String crtSalas;
-
-	private String crtSalasInad;
-
-	private String crtTipoRegistro;
-
-	//@Size(max = 4, message = "Numéro máximo de 4 caracteres")
-	private String crtTotalFunc;
-
-	private String crtComput;
-
-	private String crt_Equipamentos;
-
+	@Column(length = 10)
 	@Enumerated(EnumType.STRING)
 	public StatusEscola status;
 
-	/*
-	 * public boolean isAtiva() { boolean resultado = false; this.status =
-	 * StatusEscola.INATIVA;
-	 * 
-	 * if (this.idt_sitfunc.equals("1")) { this.status = StatusEscola.ATIVA;
-	 * resultado = true; } return resultado; }
-	 */
+	@Column(length = 1)
+	private String flativo;
+
+	@Column(length = 10)
+	private String tipo_registro;
+
+	@Column(length = 10)
+	private String inep;
+
+	@Column(length = 10)
+	private String situacao_funcional;
+
+	@Column(length = 10)
+	private Date ano_letivo_inicio;
+
+	@Column(length = 10)
+	private Date ano_letivo_fim;
+
+	@Column(length = 10)
+	private String nome;
+
+	@Column(length = 10)
+	private String latitude;
+
+	@Column(length = 10)
+	private String longitude;
+
+	@Column(length = 10)
+	private String cep;
+
+	@Column(length = 10)
+	private String endereco;
+
+	@Column(length = 10)
+	private String endereco_numero;
+
+	@Column(length = 10)
+	private String complemento;
+
+	@Column(length = 10)
+	private String bairro;
+
+	@Column(length = 10)
+	private String uf;
+
+	@Column(length = 10)
+	private String municipio;
+
+	@Column(length = 10)
+	private String distrito;
+
+	@Column(length = 10)
+	private String ddd;
+
+	@Column(length = 10)
+	private String telefone1;
+
+	@Column(length = 10)
+	private String telefone2;
+
+	@Column(length = 10)
+	private String telefone3;
+
+	@Column(length = 10)
+	private String fax;
+
+	@Column(length = 10)
+	private String email;
+
+	@Column(length = 10)
+	private String orgao_regional;
+
+	@Column(length = 10)
+	private String dependencia_adm;
+
+	@Column(length = 10)
+	private String local_zona;
+
+	@Column(length = 10)
+	private String categoria;
+
+	@Column(length = 10)
+	private String convenio;
+
+	@Column(length = 10)
+	private String mantenedor;
+
+	@Column(length = 10)
+	private String mantenedor_cnpj;
+
+	@Column(length = 10)
+	private String cnpj;
+
+	@Column(length = 10)
+	private String autorizacao;
+
+	@Column(length = 10)
+	private String local_funcionamnto;
+
+	@Column(length = 10)
+	private String forma_ocupacao;
+	
+	@Column(length = 10)
+	private String predio_compartilhado;
+
+	@Column(length = 10)
+	private String codigo_predio1;
+
+	@Column(length = 10)
+	private String codigo_predio2;
+
+	@Column(length = 10)
+	private String codigo_predio3;
+
+	@Column(length = 10)
+	private String codigo_predio4;
+	
+	@Column(length = 10)
+	private String codigo_predio5;
+	
+	@Column(length = 10)
+	private String codigo_predio6;
+
+	@Column(length = 10)
+	private String agua_consumida;
+	
+	@Column(length = 10)
+	private String abastec_agua;
+
+	@Column(length = 10)
+	private String abastec_eletrico;
+
+	@Column(length = 10)
+	private String abastec_esgoto;
+
+	@Column(length = 10)
+	private String destino_lixo;
+
+	@Column(length = 10)
+	private String dependencias;
+
+	@Column(length = 10)
+	private String n_salas;
+
+	@Column(length = 10)
+	private String salas_improviso;
+
+	@Column(length = 10)
+	private String equipamentos;
+
+	@Column(length = 10)
+	private String computadores_adm;
+
+	@Column(length = 10)
+	private String computadores_aluno;
+
+	@Column(length = 10)
+	private String internet;
+
+	@Column(length = 10)
+	private String banda_larga;
+
+	@Column(length = 10)
+	private String n_funcionarios;
+	
+	@Column(length = 10)
+	private String alimentacao;
+
+	@Column(length = 10)
+	private String aee;
+
+	@Column(length = 10)
+	private String atividade_comp;
+
+	@Column(length = 10)
+	private String modalidade;
+
+	@Column(length = 10)
+	private String etapa;
+
+	@Column(length = 10)
+	private String ensido_ciclo;
+
+	@Column(length = 10)
+	private String localizacao_dif;
+
+	@Column(length = 10)
+	private String material_didatico;
+
+	@Column(length = 10)
+	private String educacao_indio;
+
+	@Column(length = 10)
+	private String lingua_indio;
+
+	@Column(length = 10)
+	private String codigo_lingua_indio;
+
+	@Column(length = 10)
+	private String espaco_br_alfa;
+
+	@Column(length = 10)
+	private String espaco_fds;
+
+	@Column(length = 10)
+	private String formacao_alternancia;
 
 }

@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.censolab.api.model.Escola;
 import com.censolab.api.repository.EscolaRepository;
 
-@RestController()
-@RequestMapping(value = "/v1/escolas", produces = MediaType.APPLICATION_JSON_VALUE)
+@RestController
+@RequestMapping(value = "/escolas", produces = MediaType.APPLICATION_JSON_VALUE)
 public class EscolaController {
 
 	@Autowired
@@ -30,12 +30,24 @@ public class EscolaController {
 	public List<Escola> listar() {
 		return escolaRepository.listar();
 	}
+	@GetMapping("/{escolaId}")
+	public ResponseEntity<Escola> buscar(@PathVariable Long escolaId){
+		
+		Escola escola = escolaRepository.buscar(escolaId);
+		if(escola != null) {
+			return ResponseEntity.ok(escola);
+		}else {
+			return ResponseEntity.notFound().build();
+		}
+		
+
+	}
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Escola adicionar(@RequestBody Escola escola) {
-
-		return null;
+		
+		return escolaRepository.salvar(escola);
 	}
 
 	@PutMapping("/{ escolaId }")

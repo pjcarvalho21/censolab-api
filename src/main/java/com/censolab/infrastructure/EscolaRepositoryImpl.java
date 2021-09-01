@@ -39,7 +39,7 @@ public class EscolaRepositoryImpl implements EscolaRepository {
 	@Transactional
 	@Override
 	public void remover(Escola escola) {
-            escola = buscar(escola.getIdt_id());
+            escola = buscar(escola.getId());
             manager.remove(escola);
 
 	}
