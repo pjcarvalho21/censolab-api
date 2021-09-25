@@ -1,4 +1,5 @@
 package com.censolab.api.model;
+
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
@@ -15,8 +16,6 @@ import javax.persistence.Transient;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-
-
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
@@ -26,94 +25,89 @@ public class Turma implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
 	private Long id;
 
-	@Column(name = "Escola_idInep")
-	private String escola_idInep;
+	@Column(length = 2)
+	private String tipo_registro;
 
-	@Column(name = "flativo")
+	@Column(length = 8)
+	private String inep_escola;
+
+	@Column(length = 10)
+	private String inep;
+
+	@Column(length = 80)
+	private String nome;
+
+	@Column(length = 1)
 	private String flativo;
+	@Column(length = 4)
+	private String Horario_Inicio;
+	@Column(length = 4)
+	private String Horario_fim;
+	@Column(length = 6)
+	private String dias;
+	@Column(length = 1)
+	private String tipo_atendimento;
+	@Column(length = 1)
+	private String mais_educa;
 
-	@Column(name = "reg_atvd_comp")
-	private String regAtvdComp;
+	@Column(length = 5)
+	private String codigo_atividade1;
 
-	@Column(name = "reg_atvd_aee")
-	private String regAtvdAee;
+	@Column(length = 5)
+	private String codigo_atividade2;
 
-	@Column(name = "reg_dias")
-	private String regDias;
+	@Column(length = 5)
+	private String codigo_atividade3;
 
-	@Column(name = "reg_disciplina")
-	private String regDisciplina;
- 
-	@Column(name = "reg_horarioInicial")
-//	@NotEmpty(message = "HORARIO ENTRADA: não pode ser vazio!")
-	private String regHorarioInicial;
-	
-	@Column(name = "reg_horarioFinal")
-	//@NotEmpty(message = "HORARIO SAÍDA: não pode ser vazio!")
-	private String regHorarioFinal;
+	@Column(length = 5)
+	private String codigo_atividade4;
 
-	@Column(name = "reg_idinep")
-	private String regIdinep;
+	@Column(length = 5)
+	private String codigo_atividade5;
 
-	@Column(name = "reg_idturmalocal")
-	private String regIdturmalocal;
+	@Column(length = 5)
+	private String codigo_atividade6;
 
-	@Column(name = "reg_maiseduc")
-	private String regMaiseduc;
+	@Column(length = 10)
+	private String ativdade_aee;
 
-	@Column(name = "reg_modal")
-	private String regModal;
+	@Column(length = 1)
+	private String modalidade;
+	@Column(length = 2)
+	private String etapa;
 
-	@Column(name = "reg_etapa")
-	private String regEtapa;
+	@Column(length = 8)
+	private String educacao_profissional;
 
-	@Column(name = "reg_educ_prof")
-	private String regEducProf;
-	
-	//@NotEmpty(message = "NOME: não pode ser vazio!")
-	private String reg_nome;
+	@Column(length = 25)
+	private String disciplina;
 
-	@Column(name = "reg_semprof")
-	private String regSemprof;
+	@Column(length = 1)
+	private String sem_profissional;
 
-	@Column(name = "reg_tpatend")
-	//@NotEmpty(message = "ATENDIMENTO: não pode ser vazio!")
-	private String regTpatend;
+	/*
+	 * @ManyToMany
+	 * 
+	 * @JoinTable(name = "ProfessorTurma", joinColumns = { @JoinColumn(name =
+	 * "id_Turma") }, inverseJoinColumns = {
+	 * 
+	 * @JoinColumn(name = "id_Prof") }) private List<Professor> professores;
+	 */
 
-	@Column(name = "reg_tpregistro")
-	private Long regTpregistro;
-	
-	@Transient
-	private String nmModalidade;
-	
-	
-	@ManyToMany
-	@JoinTable(name = "ProfessorTurma", joinColumns = { @JoinColumn(name = "id_Turma") }, inverseJoinColumns = {
-			@JoinColumn(name = "id_Prof") })
-	private List<Professor> professores;
-
-	public String getNmModalidade() {
-		
-		switch (this.regModal) {
-		case "1":
-			nmModalidade = "Ensino regular";
-			break;
-		case "2":
-			nmModalidade = "Educação Especial";
-            break;
-		default:
-			nmModalidade = "Educação de Jovens e Adultos";
-			break;
-		}
-		 
-		
-		
-		
-		return nmModalidade;
-	}
+	/*
+	 * public String getNmModalidade() {
+	 * 
+	 * switch (this.Modal) { case "1": nmModalidade = "Ensino ular"; break; case
+	 * "2": nmModalidade = "Educação Especial"; break; default: nmModalidade =
+	 * "Educação de Jovens e Adultos"; break; }
+	 * 
+	 * 
+	 * 
+	 * 
+	 * return nmModalidade; }
+	 */
 
 	/*
 	 * @ManyToOne
@@ -122,20 +116,12 @@ public class Turma implements Serializable {
 	 */
 
 	// bi-directional many-to-many association to Disciplina
-	/*@ManyToMany(cascade = { CascadeType.MERGE })
-	@JoinTable(name = "DisciplinaTurma", joinColumns = { @JoinColumn(name = "id_Turma") }, inverseJoinColumns = { @JoinColumn(name = "id_Disc") })
-	private List<Disciplina> disciplinas;*/
-
-	
-
-	public Turma() {
-	}
-	
 	/*
-	 * public Turma(Escola e) { this.escola = e; }
+	 * @ManyToMany(cascade = { CascadeType.MERGE })
+	 * 
+	 * @JoinTable(name = "DisciplinaTurma", joinColumns = { @JoinColumn(name =
+	 * "id_Turma") }, inverseJoinColumns = { @JoinColumn(name = "id_Disc") })
+	 * private List<Disciplina> disciplinas;
 	 */
-
-	
-	
 
 }

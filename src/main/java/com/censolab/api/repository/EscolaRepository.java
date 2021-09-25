@@ -13,6 +13,6 @@ public interface EscolaRepository {
 
 	Escola salvar(Escola escola);
 
-	void remover(Escola escola);
+	void remover(Long id);
 
 }

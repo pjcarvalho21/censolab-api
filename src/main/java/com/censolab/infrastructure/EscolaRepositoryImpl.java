@@ -1,13 +1,11 @@
 package com.censolab.infrastructure;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.censolab.api.model.Escola;
 import com.censolab.api.repository.EscolaRepository;
 
@@ -32,15 +30,20 @@ public class EscolaRepositoryImpl implements EscolaRepository {
 	@Transactional
 	@Override
 	public Escola salvar(Escola escola) {
-		
+
 		return manager.merge(escola);
 	}
 
 	@Transactional
 	@Override
-	public void remover(Escola escola) {
-            escola = buscar(escola.getId());
-            manager.remove(escola);
+	public void remover(Long id) {
+
+		Escola escola = buscar(id);
+		if (escola == null) {
+			throw new EmptyResultDataAccessException(1);
+		}
+
+		manager.remove(escola);
 
 	}
 

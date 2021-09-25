@@ -26,214 +26,82 @@ public class Aluno implements Serializable {
 	@Column(unique = true, nullable = false)
 	private Long id;
 	
+	private String tipo_registro;
+	private String inep;
+	private String nome;
+	private String nis;
+	private String nascimento;
+	private String cor;
+	private String filiacao;
+	private String mae;
+	private String pai;
+	private String nacionalidade;
+	private String pais;
+	private String uf;
+	private String municipio;
+	private String deficiente;
+	private String cegueira;
+	private String baixa_visao;
+	private String surdez;
+	private String deficiencia_auditiva;
+	private String surdo_cegueira;
+	private String deficiencia_fisica;
+	private String deficiencia_intelectual;
+	private String deficiencia_multipla;
+	private String autismo;
+	private String asperger;
+	private String rett;
+	private String desintegrativo_infancia;
+	private String superdotado;
 	
-	/*DOCUMENTO CIVIL*/
-	@Column(name = "doc_cciv")
-	private Long docCciv;
-
-	@Column(name = "doc_cciv_emis", length = 10)
-	private String docCcivEmis;
-
-	@Column(name = "doc_cciv_folha", length = 4)
-	private String docCcivFolha;
-
-	@Column(name = "doc_cciv_idcto")
-	private Long docCcivIdcto;
-
-	@Column(name = "doc_cciv_livro", length = 8)
-	private String docCcivLivro;
-
-	@Column(name = "doc_cciv_mat", length = 32)
-	private String docCcivMat;
-
-	@Column(name = "doc_cciv_mncto")
-	private String docCcivMncto;
-
-	@Column(name = "doc_cciv_ntermo", length = 8)
-	private String docCcivNtermo;
-
-	@Column(name = "doc_cciv_ufcto")
-	private String docCcivUfcto;
-
-	@Column(name = "doc_cpf", length = 11)
-	private String docCpf;
-
-	@Column(name = "doc_falta")
-	private Long docFalta;
-
-	@Column(name = "doc_nis", length = 11)
-	private String docNis;
-
-	@Column(name = "doc_pport", length = 20)
-	private String docPport;
-
-	@Column(name = "doc_rg", length = 20)
-	private String docRg;
-
-	@Column(name = "doc_rg_compl", length = 4)
-	private String docRgCompl;
-
-	@Column(name = "doc_rg_emissor")
-	private String docRgEmissor;
-
-	@Column(name = "doc_rg_exp", length = 10)
-	private String docRgExp;
-
-	@Column(name = "doc_rg_uf")
-	private Long docRgUf;
-
-	@Column(name = "doc_tp_cciv")
-	private Long docTpCciv;
-
-	@Column(name = "doc_tpregistro")
-	private Long docTpregistro;
+	private String recurso;
+	private String auxilio_ledor;
+	private String auxilio_transcricao;
+	private String guia_interprete;
+	private String interprete_libras;
+	private String leitura_labial;
+	private String prova_16;
+	private String prova_20;
+	private String prova_24;
+	private String prova_braile;
+	private String sem_recurso;
+	private String tipo_registro_doc;
+	private String rg;
+	private String rg_complemento;
+	private String rg_emissor;
+	private String rg_uf;
+	private String rg_expedicao;
+	private String certidao_modelo;
+	private String certidao_tipo;
+	private String certidao_termo;
+	private String certidao_folha;
+	private String certidao_livro;
+	private String certidao_emissao;
+	private String certidao_uf_cartorio;
+	private String certidao_mun_cartorio;
+	private String certidao_cod_cartorio;
+	private String certidao_matricula;
+	private String cpf;
+	private String passaporte;
+	private String justificativa_falta_doc;
+	private String zona_residencia;
+	private String cep;
+	private String endereco;
+	private String numero_casa;
+	private String endereco_complemento;
+	private String bairro;
+	private String endereco_uf;
+	private String endereco_municipio;
+	
+	private String tipo_registro_vinc;
+	private String matricula;
+	private String turma_unificada;
+	private String etapa;
+	private String outro_espaco;
+	private String transporte;
+	private String transporte_responsavel;
+	private String tipo_veiculo;
+	private String forma_ingresso;
 	
 	
-	/*ENDEREÇO*/
-
-	@Column(name = "end_bairro", length = 50)
-	private String endBairro;
-
-	@Column(name = "end_cep", length = 8)
-	private String endCep;
-
-	@Column(name = "end_compl", length = 20)
-	private String endCompl;
-
-	@Column(name = "end_desc", length = 100)
-	private String endDesc;
-
-	@Column(name = "end_nr", length = 10)
-	private String endNr;
-
-	@Column(name = "end_uf")
-	private Long endUf;
-
-	@Column(name = "end_uf_mun")
-	private Long endUfMun;
-
-	@Column(name = "end_zona")
-	private Long endZona;
-
-	@Column(name = "flativo", length = 1)
-	private String flativo;
-
-	
-	/*IDENTIFICAÇÃO*/
-	
-	@Column(name = "reg_alu_aee")
-	private Long regAluAee;
-
-	@Column(name = "reg_filiacao")
-	private Long regFiliacao;
-
-	@Column(name = "reg_idinep_aluno")
-	private String regIdinepAluno;
-
-	@Column(name = "reg_idlocal")
-	private String regIdlocal;
-
-	@Column(name = "reg_mae")
-	private String regMae;
-
-	@Column(name = "reg_modo")
-	private String regModo;
-
-	@Column(name = "reg_nacional")
-	private Long regNacional;
-
-	@Column(name = "reg_nascimento")
-	private String regNascimento;
-
-	@Column(name = "reg_nis")
-	private Long regNis;
-
-	@Column(name = "reg_nome")
-	private String regNome;
-
-	@Column(name = "reg_pai")
-	private String regPai;
-
-	@Column(name = "reg_pais")
-	private Long regPais;
-
-	@Column(name = "reg_raca")
-	private Long regRaca;
-
-	@Column(name = "reg_recurso")
-	private String regRecurso;
-
-	@Column(name = "reg_sexo")
-	private Long regSexo;
-
-	@Column(name = "reg_situacao")
-	private String regSituacao;
-
-	@Column(name = "regDef")
-	private String regDef;
-
-	@Column(name = "reg_tpdef")
-	private String regTpdef;
-
-	@Column(name = "reg_tpregistro")
-	private Long regTpregistro;
-
-	@Column(name = "reg_mun_natal")
-	private Long regMunNatal;
-
-	@Column(name = "reg_uf_natal")
-	private Long regUfNatal;
-	
-/*	VINCULAÇÃO*/
-
-	@Column(name = "vinc_al_mat")
-	private Long vincAlMat;
-
-	@Column(name = "vinc_etapa")
-	private String vincEtapa;
-
-	@Column(name = "vinc_ingresso")
-	private Long vincIngresso;
-
-	@Column(name = "vinc_outroesp")
-	private Long vincOutroesp;
-
-	@Column(name = "vinc_tpregistro")
-	private Long vincTpregistro;
-
-	@Column(name = "vinc_transpub")
-	private Long vincTranspub;
-
-	@Column(name = "vinc_transpub_resp")
-	private Long vincTranspubResp;
-
-	@Column(name = "vinc_transpub_tp")
-	private String vincTranspubTp;
-
-	@Column(name = "vinc_tunif")
-	private Long vincTunif;
-
-	// bi-directional many-to-one association to AlunoEscola
-	/*
-	 * @OneToMany(mappedBy = "aluno", cascade = { CascadeType.ALL }) private
-	 * List<AlunoEscola> escolasAluno;
-	 */
-
-	
-	// bi-directional many-to-one association to AlunoEscola
-	/*
-	 * @OneToMany(mappedBy = "aluno", cascade = { CascadeType.ALL }) private
-	 * List<AlunoTurma> TurmasAluno;
-	 */
-	
-	@Transient
-	private String idTurma;
-
-	public Aluno() {
-	}
-
-	
-
-	
-
 }
