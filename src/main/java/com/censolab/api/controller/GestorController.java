@@ -1,7 +1,7 @@
 package com.censolab.api.controller;
 
 import java.util.List;
-
+import java.util.Optional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.censolab.api.model.Gestor;
 import com.censolab.api.repository.GestorRepository;
+import com.censolab.api.service.CadastroGestorService;
 
 @RestController
 @RequestMapping(value = "/gestores")
@@ -25,17 +26,20 @@ public class GestorController {
 	@Autowired
 	private GestorRepository gestorRepository;
 
+	@Autowired
+	private CadastroGestorService gestorService;
+
 	@GetMapping
 	public List<Gestor> listar() {
-		return gestorRepository.listar();
+		return gestorRepository.findAll();
 	}
 
 	@GetMapping("/{gestorId}")
 	public ResponseEntity<Gestor> buscar(@PathVariable Long gestorId) {
 
-		Gestor gestor = gestorRepository.buscar(gestorId);
-		if (gestor != null) {
-			return ResponseEntity.ok(gestor);
+		Optional<Gestor> gestor = gestorRepository.findById(gestorId);
+		if (gestor.isPresent()) {
+			return ResponseEntity.ok(gestor.get());
 		} else {
 			return ResponseEntity.notFound().build();
 		}
@@ -46,15 +50,16 @@ public class GestorController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public Gestor adicionar(@RequestBody Gestor gestor) {
 
-		return gestorRepository.salvar(gestor);
+		return gestorService.salvar(gestor);
 	}
 
 	@PutMapping("/{ id }")
 	public ResponseEntity<Gestor> atualizar(@PathVariable Long id, @RequestBody Gestor gestor) {
-		Gestor gestorAtual = gestorRepository.buscar(id);
-		BeanUtils.copyProperties(gestor, gestorAtual);
-		gestorRepository.salvar(gestorAtual);
-		return ResponseEntity.ok(gestorAtual);
+		Optional<Gestor> gestorAtual = gestorRepository.findById(id);
+		BeanUtils.copyProperties(gestor, gestorAtual.get());
+
+		Gestor gestorSalvar = gestorService.salvar(gestor);
+		return ResponseEntity.ok(gestorSalvar);
 
 	}
 

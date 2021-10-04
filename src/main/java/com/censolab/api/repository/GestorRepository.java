@@ -1,17 +1,10 @@
 package com.censolab.api.repository;
 
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 import com.censolab.api.model.Gestor;
 
 
-public interface GestorRepository {
+public interface GestorRepository extends JpaRepository<Gestor, Long> {
 
-	List<Gestor> listar();
-
-	Gestor buscar(Long id);
-
-	Gestor salvar(Gestor gestor);
-
-	void remover(Gestor gestor);
 
 }

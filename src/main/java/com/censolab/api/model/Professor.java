@@ -1,7 +1,5 @@
 package com.censolab.api.model;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,107 +25,248 @@ public class Professor implements java.io.Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
 	private Long id;
+	
+	@Column(length = 1)
 	private String flativo;
-	private int tipo_registro_id;
-	private Integer inep;
-	private Integer inep_escola;
+	
+	@Column(length = 2)
+	private String tipo_registro_id;
+	
+	@Column(length = 8)
+	private String inep;
+	
+	@Column(length = 12)
+	private String inep_escola;
+	
+	@Column(length = 100)
 	private String nome;
+	
+	@Column(length = 100)
 	private String email;
-	private Integer nis;
+	
+	@Column(length = 11)
+	private String nis;
 
-	private Date nascimento;
-	private int nexo;
-	private int raca;
+	@Column(length = 10)
+	private String nascimento;
+	
+	@Column(length = 1)
+	private String sexo;
+	
+	@Column(length = 1)
+	private String raca;
+	
+	@Column(length = 100)
 	private String mae;
-	private int nacionalidade;
-	private int pais;
-	private Integer uf;
-	private Integer municipio;
+	
+	@Column(length = 1)
+	private String nacionalidade;
+	
+	@Column(length = 3)
+	private String pais;
+	
+	@Column(length = 2)
+	private String uf;
+	
+	@Column(length = 7)
+	private String municipio;
+	
+	@Column(length = 1)
 	private String deficiente;
 	
+	@Column(length = 1)
 	private String def_cegueira;
+	
+	@Column(length = 1)
 	private String def_baixa_visao;
+	
+	@Column(length = 1)
 	private String def_surdez;
+	
+	@Column(length = 1)
 	private String def_auditiva;
+	
+	@Column(length = 1)
 	private String def_surdo_cegueira;
+	
+	@Column(length = 1)
 	private String def_fisica;
+	
+	@Column(length = 1)
 	private String def_intelectual;
+	
+	@Column(length = 1)
 	private String def_multipla;
 	
-	
-	
-	
-	
-	private Integer SlAulaAee;
-	
-	private String ListaDef;
-
-	
+	@Column(length =2 )
 	private int _tipo_registro_doc;
-	private String cpf;
-	private Integer zoza;
-	private String cep;
-	private String endereco;
-	private String numero;
-	private String complemento;
-	private String bairro;
-	private Integer uf_moradia;
-	private Integer mun_moradia;
-
 	
-	private Integer tipo_registro_var;
+	@Column(length = 11)
+	private String cpf;
+	
+	@Column(length = 1)
+	private String zona;
+	
+	@Column(length = 8)
+	private String cep;
+	
+	@Column(length =100)
+	private String endereco;
+	
+	@Column(length = 10)
+	private String numero;
+	
+	@Column(length = 20)
+	private String complemento;
+	
+	@Column(length = 50)
+	private String bairro;
+	
+	@Column(length = 2)
+	private String uf_moradia;
+	
+	@Column(length = 7)
+	private String mun_moradia;
+
+	@Column(length = 2)
+	private String tipo_registro_var;
+	
+	@Column(length = 1)
 	private String escolaridade;
 
+	
+	@Column(length = 1)
 	private String situacao_curso_sup1;
+	
+	@Column(length = 1)
 	private String formacao_pedag1;
+	
+	@Column(length = 6)
 	private String curso_superior1;
+	
+	@Column(length = 4)
 	private String inicio_curso1;
+	
+	@Column(length = 4)
 	private String fim_curso1;
+	
+	@Column(length = 1)
 	private String tipo_instituicao_sup1;
+	
+	@Column(length = 7)
 	private String instituicao_sup1;
 
+	
+	
+	@Column(length = 1)
 	private String situacao_curso_sup2;
+	
+	@Column(length = 1)
 	private String formacao_pedag2;
+	
+	@Column(length = 6)
 	private String curso_superior2;
+	
+	@Column(length = 4)
 	private String inicio_curso2;
+	
+	@Column(length = 4)
 	private String fim_curso2;
+	
+	@Column(length = 1)
 	private String tipo_instituicao_sup2;
 	
+	@Column(length = 7)
+	private String instituicao_sup2;
+	
+	
+	
+	@Column(length = 1)
 	private String situacao_curso_sup3;
+	
+	@Column(length = 1)
 	private String formacao_pedag3;
+	
+	@Column(length = 6)
 	private String curso_superior3;
+	
+	@Column(length = 4)
 	private String inicio_curso3;
+	
+	@Column(length = 4)
 	private String fim_curso3;
+	
+	@Column(length = 1)
 	private String tipo_instituicao_sup3;
+	
+	@Column(length = 7)
 	private String instituicao_sup3;
-;
 
+	
+	@Column(length = 1)
 	private String mestrado;
-	private Integer especializacao;
+	
+	@Column(length = 1)
+	private String especializacao;
+	
+	@Column(length = 1)
 	private String doutorado;
+	
+	@Column(length = 1)
 	private String nenhum_curso;
+	
+	@Column(length = 16)
 	private String outros;
 	
 	
+	@Column(length = 2)
+	private String tipo_registro_docencia;
 	
-	private int tipo_registro_docen;
-	private int funcao;
-	private Integer situacao_funcional;
-    private Long Disciplina01;
-    private Long Disciplina02;
-    private Long Disciplina03;
-    private Long Disciplina04;
-    private Long Disciplina05;
-    private Long Disciplina06;
-    private Long Disciplina07;
-    private Long Disciplina08;
-    private Long Disciplina09;
-    private Long Disciplina10;
-    private Long Disciplina11;
-    private Long Disciplina12;
-    private Long Disciplina13;
+	@Column(length = 1)
+	private String funcao;
+	
+	@Column(length = 1)
+	private String situacao_funcional;
+    
+	@Column(length = 2)
+	private String Disciplina01;
+    
+	@Column(length = 2)
+	private String Disciplina02;
+    
+	@Column(length = 2)
+	private String Disciplina03;
+    
+	@Column(length = 2)
+	private String Disciplina04;
+    
+	@Column(length = 2)
+	private String Disciplina05;
+    
+	@Column(length = 2)
+	private String Disciplina06;
+    
+	@Column(length = 2)
+	private String Disciplina07;
+    
+	@Column(length = 2)
+	private String Disciplina08;
+    
+	@Column(length = 2)
+	private String Disciplina09;
+    
+	@Column(length = 2)
+	private String Disciplina10;
+    
+	@Column(length = 2)
+	private String Disciplina11;
+    
+	@Column(length = 2)
+	private String Disciplina12;
+    
+	@Column(length = 2)
+	private String Disciplina13;
 
 
 	/*
