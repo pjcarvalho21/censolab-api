@@ -6,6 +6,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.censolab.api.exception.EntidadeEmUsoException;
 import com.censolab.api.model.Gestor;
 import com.censolab.api.repository.GestorRepository;
 import com.censolab.api.service.CadastroGestorService;
@@ -34,10 +36,10 @@ public class GestorController {
 		return gestorRepository.findAll();
 	}
 
-	@GetMapping("/{gestorId}")
-	public ResponseEntity<Gestor> buscar(@PathVariable Long gestorId) {
+	@GetMapping("/{id}")
+	public ResponseEntity<Gestor> buscar(@PathVariable Long id) {
 
-		Optional<Gestor> gestor = gestorRepository.findById(gestorId);
+		Optional<Gestor> gestor = gestorRepository.findById(id);
 		if (gestor.isPresent()) {
 			return ResponseEntity.ok(gestor.get());
 		} else {
@@ -53,14 +55,27 @@ public class GestorController {
 		return gestorService.salvar(gestor);
 	}
 
-	@PutMapping("/{ id }")
+	@PutMapping("/{id}")
 	public ResponseEntity<Gestor> atualizar(@PathVariable Long id, @RequestBody Gestor gestor) {
 		Optional<Gestor> gestorAtual = gestorRepository.findById(id);
-		BeanUtils.copyProperties(gestor, gestorAtual.get());
+		BeanUtils.copyProperties(gestor, gestorAtual.get(),"id");
 
 		Gestor gestorSalvar = gestorService.salvar(gestor);
 		return ResponseEntity.ok(gestorSalvar);
 
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Gestor> remover(@PathVariable Long id){
+		try {
+			  gestorService.remover(id);
+			  return ResponseEntity.noContent().build();
+		} catch (EntidadeEmUsoException e) {
+                return ResponseEntity.notFound().build();
+		}
+
+		
+		
 	}
 
 }

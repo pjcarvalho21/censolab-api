@@ -60,7 +60,7 @@ public class EscolaController {
 	@PutMapping("/{id}")
 	public ResponseEntity<Escola> atualizar(@PathVariable Long id, @RequestBody Escola escola) {
 		Optional<Escola> escolaAtual = escolaRepository.findById(id);
-		BeanUtils.copyProperties(escola, escolaAtual, "id");
+		BeanUtils.copyProperties(escola, escolaAtual.get(), "id");
 		Escola escolaSalva = cadastroEscolaService.salvar(escola);
 		return ResponseEntity.ok(escolaSalva);
 

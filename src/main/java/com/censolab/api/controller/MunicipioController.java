@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.censolab.api.model.auxiliar.Municipio;
@@ -19,10 +19,10 @@ public class MunicipioController {
 	@Autowired
 	private MunicipioRepository municipioRespository;
 	
-    @GetMapping("/{idUf}")
-	public List<Municipio> listarPorUf(@PathVariable Long idUf) {
+    @GetMapping("/por-estado")
+	public List<Municipio> listarPorUf(@RequestParam Long id) {
 	
-		return municipioRespository.findByufId(idUf);
+		return municipioRespository.findByufId(id);
 		
 	}
 	
