@@ -19,7 +19,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-@Table(name = "Turma")
+@Table(name = "tb_turma")
 public class Turma implements Serializable {
 	private static final long serialVersionUID = 1L;
 
