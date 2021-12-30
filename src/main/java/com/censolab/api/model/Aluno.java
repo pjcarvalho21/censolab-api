@@ -30,7 +30,7 @@ public class Aluno implements Serializable {
 	private String flativo;
 	
 	@Column(length =2 )
-	private String tipo_registro;
+	private String tipo_registro_id;
 	
 	@Column(length = 12)
 	private String inep;

@@ -22,6 +22,7 @@ public class MunicipioController {
     @GetMapping("/por-estado")
 	public List<Municipio> listarPorUf(@RequestParam Long id) {
 	
+    	
 		return municipioRespository.findByufId(id);
 		
 	}

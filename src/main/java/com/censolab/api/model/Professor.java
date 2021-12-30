@@ -100,7 +100,7 @@ public class Professor implements java.io.Serializable {
 	private String def_multipla;
 	
 	@Column(length =2 )
-	private int _tipo_registro_doc;
+	private String tipo_registro_doc;
 	
 	@Column(length = 11)
 	private String cpf;
@@ -230,43 +230,43 @@ public class Professor implements java.io.Serializable {
 	private String situacao_funcional;
     
 	@Column(length = 2)
-	private String Disciplina01;
+	private String disciplina01;
     
 	@Column(length = 2)
-	private String Disciplina02;
+	private String disciplina02;
     
 	@Column(length = 2)
-	private String Disciplina03;
+	private String disciplina03;
     
 	@Column(length = 2)
-	private String Disciplina04;
+	private String disciplina04;
     
 	@Column(length = 2)
-	private String Disciplina05;
+	private String disciplina05;
     
 	@Column(length = 2)
-	private String Disciplina06;
+	private String disciplina06;
     
 	@Column(length = 2)
-	private String Disciplina07;
+	private String disciplina07;
     
 	@Column(length = 2)
-	private String Disciplina08;
+	private String disciplina08;
     
 	@Column(length = 2)
-	private String Disciplina09;
+	private String disciplina09;
     
 	@Column(length = 2)
-	private String Disciplina10;
+	private String disciplina10;
     
 	@Column(length = 2)
-	private String Disciplina11;
+	private String disciplina11;
     
 	@Column(length = 2)
-	private String Disciplina12;
+	private String disciplina12;
     
 	@Column(length = 2)
-	private String Disciplina13;
+	private String disciplina13;
 
 
 	/*

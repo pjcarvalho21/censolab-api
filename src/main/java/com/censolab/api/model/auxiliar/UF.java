@@ -25,6 +25,8 @@ public class UF implements Serializable{
 	private Long id;
 
 	private Long codigo;
+	
+	private Long codigo_pais;
 
 	private String sigla;
 
